@@ -6,6 +6,7 @@
         public int LocationId { get; set; }
         public string? ReviewUserName { get; set; }
         public int ReviewRating { get; set; }
+        public string? ReviewComment { get; set; }
         public virtual Location Location { get; set; }
     }
 }
