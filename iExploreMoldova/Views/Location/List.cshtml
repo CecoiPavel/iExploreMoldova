@@ -1,0 +1,31 @@
+﻿@model iExploreMoldova.Models.ViewModel.LocationsListViewModel
+
+    
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>iExplore Moldova</title>
+</head>
+<body>
+<div>
+    <h1>@Model.CurrentCategory</h1>
+    @foreach (var location in Model.Locations)
+    {
+        <div>
+            <img src="@location.LocationImageUrl" alt="@location.LocationName"/>
+            <h4>
+                @location.PriceToVisit.ToString("c")
+            </h4>
+            <h2>
+                @location.Category.CategoryName
+            </h2>
+            <h5>
+                @location.Reviews
+            </h5>
+        </div>
+    }
+</div>
+</body>
+</html>
