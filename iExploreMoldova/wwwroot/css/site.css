@@ -24,3 +24,25 @@ body {
     height: 200px;
     object-fit: cover;
 }
+.location-name-display {
+    color: black !important;
+    text-decoration: none !important;
+}
+.star-icon {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    color: gold;
+    font-size: 1.5em;
+}
+.top-location-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+

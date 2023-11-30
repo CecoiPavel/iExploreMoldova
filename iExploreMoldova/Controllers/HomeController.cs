@@ -1,21 +1,24 @@
 ﻿using iExploreMoldova.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using iExploreMoldova.ViewModel;
 
 namespace iExploreMoldova.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILocationRepository _locationRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILocationRepository locationRepository)
         {
-            _logger = logger;
+            _locationRepository = locationRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var topLocations = _locationRepository.topLocations;
+            var homeVieModel = new HomeViewModel(topLocations);
+            return View(homeVieModel);
         }
 
         public IActionResult Privacy()

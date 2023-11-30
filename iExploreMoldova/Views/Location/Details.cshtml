@@ -15,11 +15,18 @@
             <div class="row no-gutters">
                 <div class="col-md-8">
                     <div class="card-body">
+                        
+                        @if (Model.TopLocation)
+                        {
+                            <div class="star-icon">
+                                <p class="star-icon">★★★★★</p>
+                            </div>
+                        }
+
                         <h1 class="card-title">@Model.LocationName</h1>
                         <p class="card-text">Description: @Model.LocationDescription</p>
                         <p class="card-text">Address: @Model.LocationAddress</p>
                         <p class="card-text">Price to Visit: @Model.PriceToVisit.ToString("C")</p>
-                        <p class="card-text">Top Location: @Model.TopLocation</p>
                         <p class="card-text">Available to Visit: @Model.AvailableToVisit</p>
 
                         <h2 class="card-title mt-4">Category</h2>

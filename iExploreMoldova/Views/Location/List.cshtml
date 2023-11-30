@@ -1,16 +1,7 @@
 ﻿@model LocationsListViewModel
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>iExplore Moldova</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2y0CG10pMr5Y5L16L2VZj3lIXzm"
-          crossorigin="anonymous">
-</head>
-<body>
+
 <div class="container mt-3">
     <h1>@Model.CurrentCategory</h1>
     <div class="row">
@@ -18,9 +9,14 @@
         {
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="@location.LocationImageUrl" class="card-img-top img-fluid img-height" alt="@location.LocationName"/>
+                    <img src="@location.LocationImageUrl" class="card-img-top img-fluid img-height" alt="@location.LocationName" />
+                    
+                    @if (location.TopLocation)
+                    {
+                        <div class="star-icon">★</div>
+                    }
                     <div class="card-body">
-                        <h4 class="card-title">@location.LocationName</h4>
+                        <h4> <a class="location-name-display" asp-controller="Location" asp-action="Details" asp-route-id="@location.LocationId">@location.LocationName</a> </h4>
                         <p class="card-text">Price to visit: <strong>@location.PriceToVisit.ToString("c")</strong></p>
                         <p class="card-text">Category: <strong>@location.Category.CategoryName</strong></p>
                     </div>
@@ -38,6 +34,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2y0CG10pMr5Y5L16L2VZj3lIXzm"
             crossorigin="anonymous"></script>
-
-</body>
-</html>
