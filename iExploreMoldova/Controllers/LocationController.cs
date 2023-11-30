@@ -1,5 +1,5 @@
 ﻿using iExploreMoldova.Models;
-using iExploreMoldova.Models.ViewModel;
+using iExploreMoldova.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iExploreMoldova.Controllers
@@ -21,6 +21,14 @@ namespace iExploreMoldova.Controllers
             LocationsListViewModel locationsListViewModel = new LocationsListViewModel
             (_locationRepository.alLocations, "Rural locations");
             return View(locationsListViewModel);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var location = _locationRepository.GetLocationById(id);
+            if (location == null)
+                return NotFound();
+            return View(location);
         }
     }
 }
