@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using iExploreMoldova.Models;
 
@@ -10,9 +11,11 @@ using iExploreMoldova.Models;
 namespace iExploreMoldova.Migrations
 {
     [DbContext(typeof(iExploreMoldovaDbContext))]
-    partial class iExploreMoldovaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231130123113_CreateTickets")]
+    partial class CreateTickets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
