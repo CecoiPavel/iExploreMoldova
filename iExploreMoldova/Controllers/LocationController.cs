@@ -19,7 +19,7 @@ namespace iExploreMoldova.Controllers
         public IActionResult List()
         {
             LocationsListViewModel locationsListViewModel = new LocationsListViewModel
-            (_locationRepository.alLocations, "All locations");
+            (_locationRepository.allLocations, "All locations");
             return View(locationsListViewModel);
         }
 

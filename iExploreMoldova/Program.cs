@@ -6,6 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 
+builder.Services.AddScoped<ITicketsList, TicketsList>(TicketsList.GetTicketsList);
+builder.Services.AddSession();
+//Calling the Accessor here because we included it in the GetTicketsList method --- services.GetRequiredService<IHttpContextAccessor>
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<iExploreMoldovaDbContext>(options =>
@@ -15,6 +20,9 @@ builder.Services.AddDbContext<iExploreMoldovaDbContext>(options =>
 });
 
 var app = builder.Build();
+
+//Bring in the support for sessions
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

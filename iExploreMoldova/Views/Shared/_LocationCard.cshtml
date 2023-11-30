@@ -1,0 +1,23 @@
+﻿@model Location
+
+<div class="col-md-4 mb-4">
+    <div class="card h-100">
+        <img src="@Model.LocationImageUrl" class="card-img-top img-fluid img-height" alt="@Model.LocationName" />
+        <div class="card-body">
+            <h4 class="card-title">
+                <a class="text-decoration-none" asp-controller="Location" asp-action="Details" asp-route-id="@Model.LocationId">@Model.LocationName</a>
+            </h4>
+            <p class="card-text">Price to visit: <strong>@Model.PriceToVisit.ToString("c")</strong></p>
+            <p class="card-text">Category: <strong>@Model.Category.CategoryName</strong></p>
+            @if (Model.TopLocation)
+            {
+                <div class="star-icon">
+                    <p class="star-icon">★</p>
+                </div>
+            }
+            <h4 >
+                <a class="btn btn-secondary" asp-controller="TicketsList" asp-action="AddToTicketsList" asp-route-locationid="@Model.LocationId"> Add ticket </a>
+            </h4>
+        </div>
+    </div>
+</div>

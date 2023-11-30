@@ -11,7 +11,7 @@ namespace iExploreMoldova.Models
            _context = context;
        }
 
-       public IEnumerable<Location> alLocations
+       public IEnumerable<Location> allLocations
        {
            get
            {

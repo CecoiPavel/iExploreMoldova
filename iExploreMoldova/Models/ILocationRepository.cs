@@ -2,7 +2,7 @@
 {
     public interface ILocationRepository
     {
-        IEnumerable<Location> alLocations { get; }
+        IEnumerable<Location> allLocations { get; }
         IEnumerable<Location> topLocations { get; }
         IEnumerable<Location> highReviewLocations { get; }
         Location? GetLocationById(int id);

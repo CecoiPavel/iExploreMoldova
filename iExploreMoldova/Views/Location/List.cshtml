@@ -7,21 +7,7 @@
     <div class="row">
         @foreach (var location in Model.Locations)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="@location.LocationImageUrl" class="card-img-top img-fluid img-height" alt="@location.LocationName" />
-                    
-                    @if (location.TopLocation)
-                    {
-                        <div class="star-icon">★</div>
-                    }
-                    <div class="card-body">
-                        <h4> <a class="location-name-display" asp-controller="Location" asp-action="Details" asp-route-id="@location.LocationId">@location.LocationName</a> </h4>
-                        <p class="card-text">Price to visit: <strong>@location.PriceToVisit.ToString("c")</strong></p>
-                        <p class="card-text">Category: <strong>@location.Category.CategoryName</strong></p>
-                    </div>
-                </div>
-            </div>
+            <partial name="_LocationCard" model="location"/>
         }
     </div>
 </div>
