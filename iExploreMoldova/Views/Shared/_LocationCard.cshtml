@@ -1,4 +1,4 @@
-﻿@model Location
+﻿@model iExploreMoldova.Models.Entities.Location
 
 <div class="col-md-4 mb-4">
     <div class="card h-100">
@@ -16,7 +16,7 @@
                 </div>
             }
             <h4 >
-                <a class="btn btn-secondary" asp-controller="TicketsList" asp-action="AddToTicketsList" asp-route-locationid="@Model.LocationId"> Add ticket </a>
+                <a class="btn btn-outline-dark" asp-controller="CartTicket" asp-action="AddToTicketsList" asp-route-locationid="@Model.LocationId"> Add ticket </a>
             </h4>
         </div>
     </div>

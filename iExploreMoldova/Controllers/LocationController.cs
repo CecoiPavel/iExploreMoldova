@@ -1,4 +1,5 @@
-﻿using iExploreMoldova.Models;
+﻿using iExploreMoldova.Models.Interfaces;
+using iExploreMoldova.Models.Repositories;
 using iExploreMoldova.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,6 @@ namespace iExploreMoldova.Controllers
     {
         private readonly ILocationRepository _locationRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly IReviewRepository _reviewRepository;
 
         public LocationController(ILocationRepository locationRepository, ICategoryRepository categoryRepository)
         {

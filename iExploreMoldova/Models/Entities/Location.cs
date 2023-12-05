@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 
-namespace iExploreMoldova.Models
+namespace iExploreMoldova.Models.Entities
 {
     public class Location
     {

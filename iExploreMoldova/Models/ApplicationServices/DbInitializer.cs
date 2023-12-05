@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using iExploreMoldova.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace iExploreMoldova.Models
+namespace iExploreMoldova.Models.ApplicationServices
 {
     public class DbInitializer
     {
@@ -28,23 +29,23 @@ namespace iExploreMoldova.Models
             if (!context.Categories.Any())
             {
                 var wineryCategory = new Category
-                    { CategoryName = "Winery", CategoryDescription = "Explore the world of Moldovan wines" };
+                { CategoryName = "Winery", CategoryDescription = "Explore the world of Moldovan wines" };
                 var historicalCategory = new Category
-                    { CategoryName = "Historical", CategoryDescription = "Discover ancient sites" };
+                { CategoryName = "Historical", CategoryDescription = "Discover ancient sites" };
                 var spiritualCategory = new Category
-                    { CategoryName = "Spiritual", CategoryDescription = "Visit peaceful monastic sites" };
+                { CategoryName = "Spiritual", CategoryDescription = "Visit peaceful monastic sites" };
                 var urbanCategory = new Category
-                    { CategoryName = "Urban", CategoryDescription = "Discover historical sites in the city" };
+                { CategoryName = "Urban", CategoryDescription = "Discover historical sites in the city" };
 
                 context.Categories.AddRange(wineryCategory, historicalCategory, spiritualCategory, urbanCategory);
 
                 context.SaveChanges();
 
-                
 
 
-                            if (!context.Locations.Any())
-                            {
+
+                if (!context.Locations.Any())
+                {
                     if (!context.Reviews.Any())
                     {
 
@@ -202,14 +203,14 @@ namespace iExploreMoldova.Models
                                         Reviews = new List<Review> { cityExplorerReview, localResidentReview }
                                     });
 
-                                    context.SaveChanges();
-                            };
+                        context.SaveChanges();
+                    };
                 }
             }
 
 
             context.SaveChanges();
-            
+
         }
     }
 }

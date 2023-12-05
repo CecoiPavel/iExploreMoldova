@@ -1,42 +1,42 @@
-﻿using iExploreMoldova.Models;
+﻿using iExploreMoldova.Models.Interfaces;
 using iExploreMoldova.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iExploreMoldova.Controllers
 {
-    public class TicketsListController : Controller
+    public class CartTicketController : Controller
     {
         private readonly ILocationRepository _locationRepository;
-        private readonly ITicketsList _ticketsList;
+        private readonly ICartTicket _cartTicket;
 
-        public TicketsListController(ILocationRepository locationRepository, ITicketsList ticketsList)
+        public CartTicketController(ILocationRepository locationRepository, ICartTicket cartTicket)
         {
             _locationRepository = locationRepository;
-            _ticketsList = ticketsList;
+            _cartTicket = cartTicket;
         }
 
         public IActionResult Index()
         {
-            var items = _ticketsList.GetTicketList();
-            _ticketsList.TicketList = items;
+            var items = _cartTicket.GetCart();
+            _cartTicket.CartList = items;
 
-            var ticketsListViewModel = new TicketsListViewModel(_ticketsList, 
-                _ticketsList.GetTicketListTotal());
+            var ticketsListViewModel = new TicketsListViewModel(_cartTicket, 
+                _cartTicket.GetCartTotal());
 
             return View(ticketsListViewModel);
         }
 
-        //If selected Location is not null, we will call the RemoveFromTicketsList method passing in the selectedLocation
+        //If selected Location is not null, we will call the RemoveFromCart method passing in the selectedLocation
         public RedirectToActionResult AddToTicketsList(int locationId)
         {
             var selectedLocation = _locationRepository.allLocations.FirstOrDefault(l => l.LocationId == locationId);
 
             if (selectedLocation != null)
             {
-                _ticketsList.AddToTicketsList(selectedLocation);
+                _cartTicket.AddToCart(selectedLocation);
             }
             
-            //Redirecting to the Index after the TicketsList
+            //Redirecting to the Index after the CartTicketRepository
             return RedirectToAction("Index");
         }
 
@@ -46,9 +46,15 @@ namespace iExploreMoldova.Controllers
 
             if (selectedLocation != null)
             {
-                _ticketsList.RemoveFromTicketsList(selectedLocation);
+                _cartTicket.RemoveFromCart(selectedLocation);
             }
 
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult ClearTicketCart()
+        {
+            _cartTicket.ClearCart();
             return RedirectToAction("Index");
         }
     }

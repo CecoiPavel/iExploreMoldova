@@ -1,25 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using iExploreMoldova.Models.ApplicationServices;
+using iExploreMoldova.Models.Entities;
+using iExploreMoldova.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace iExploreMoldova.Models
+namespace iExploreMoldova.Models.Repositories
 {
-    public class TicketsList: ITicketsList
+    public class CartTicketRepository : ICartTicket
     {
         private readonly iExploreMoldovaDbContext _db;
 
         public string? TicketsListId { get; set; }
 
-        public IEnumerable<Ticket> TicketList { get; set; } = default!;
+        public IEnumerable<Tickets> CartList { get; set; } = default!;
 
-        private TicketsList(iExploreMoldovaDbContext db)
+        private CartTicketRepository(iExploreMoldovaDbContext db)
         {
             _db = db;
         }
 
-            //Storing between different requests information about the user by using SESSION
+        //Storing between different requests information about the user by using SESSION
 
-         // Returning a fully created brand new TicketList by passing in the Services Collection 
+        // Returning a fully created brand new CartList by passing in the Services Collection 
 
-        public static TicketsList GetTicketsList(IServiceProvider service)
+        public static CartTicketRepository GetTicketsList(IServiceProvider service)
         {
             //Trying to have access to Session service through DI by calling as a parameter the IServices Collection
             ISession? session = service.GetRequiredService<IHttpContextAccessor>
@@ -27,8 +30,8 @@ namespace iExploreMoldova.Models
             iExploreMoldovaDbContext context = service.GetService<iExploreMoldovaDbContext>
                 () ?? throw new Exception("Error accessing the Tickets list");
 
-             //When user visits the site this code is going to heck if there is already an TicketsListId available for this user
-             //if not, then we will create a new GUID and restore that values as the TicketsListId.
+            //When user visits the site this code is going to heck if there is already an TicketsListId available for this user
+            //if not, then we will create a new GUID and restore that values as the TicketsListId.
             string ticketsId = session?.GetString("TicketsListId") ?? Guid.NewGuid().ToString();
 
             session?.SetString("TicketsListId", ticketsId);
@@ -36,16 +39,16 @@ namespace iExploreMoldova.Models
 
             //When user is returning, we will bw able to find the existing TicketsListId = and we will use that
             //Returning the Tickets List passing in the DB_Context and TicketsListId from the SESSION
-            return new TicketsList(context) { TicketsListId = ticketsId };
+            return new CartTicketRepository(context) { TicketsListId = ticketsId };
         }
 
-        public void AddToTicketsList(Location location)
+        public void AddToCart(Location location)
         {
             var ticket = _db.Tickets.SingleOrDefault(t =>
                 t.Location.LocationId == location.LocationId && t.TicketsListId == TicketsListId);
             if (ticket == null)
             {
-                ticket = new Ticket
+                ticket = new Entities.Tickets
                 {
                     TicketsListId = TicketsListId,
                     Location = location,
@@ -61,7 +64,7 @@ namespace iExploreMoldova.Models
             _db.SaveChanges();
         }
 
-        public int RemoveFromTicketsList(Location location)
+        public int RemoveFromCart(Location location)
         {
             var ticket = _db.Tickets.SingleOrDefault(
                 t => t.Location.LocationId == location.LocationId && t.TicketsListId == TicketsListId);
@@ -86,16 +89,16 @@ namespace iExploreMoldova.Models
             return sessionAmount;
         }
 
-        public IEnumerable<Ticket> GetTicketList()
+        public IEnumerable<Entities.Tickets> GetCart()
         {
-            return TicketList ??=
+            return CartList ??=
                 _db.Tickets
-                    .Where(t=>t.TicketsListId == TicketsListId)
-                    .Include(t=>t.Location)
+                    .Where(t => t.TicketsListId == TicketsListId)
+                    .Include(t => t.Location)
                     .ToList();
         }
 
-        public void ClearTicketList()
+        public void ClearCart()
         {
             var ticketsList = _db
                 .Tickets
@@ -106,11 +109,11 @@ namespace iExploreMoldova.Models
             _db.SaveChanges();
         }
 
-        public decimal GetTicketListTotal()
+        public decimal GetCartTotal()
         {
             var total = _db.Tickets
-                .Where(t=>t.TicketsListId == TicketsListId)
-                .Select(t=>t.Location.PriceToVisit * t.Amount)
+                .Where(t => t.TicketsListId == TicketsListId)
+                .Select(t => t.Location.PriceToVisit * t.Amount)
                 .Sum();
             return total;
         }

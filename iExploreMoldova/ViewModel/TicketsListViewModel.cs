@@ -1,16 +1,16 @@
-﻿using iExploreMoldova.Models;
+﻿using iExploreMoldova.Models.Interfaces;
 
 namespace iExploreMoldova.ViewModel
 {
     public class TicketsListViewModel
     {
-        public TicketsListViewModel(ITicketsList ticketsList, decimal ticketsListTotal)
+        public TicketsListViewModel(ICartTicket cartTicket, decimal ticketsListTotal)
         {
-            TicketsList = ticketsList;
+            CartTicket = cartTicket;
             TicketsListTotal = ticketsListTotal;
         }
 
-        public ITicketsList TicketsList { get; }
+        public ICartTicket CartTicket { get; }
         public decimal TicketsListTotal { get; }
     }
 }

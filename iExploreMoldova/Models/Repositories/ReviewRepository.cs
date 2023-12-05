@@ -1,6 +1,10 @@
-﻿namespace iExploreMoldova.Models
+﻿using iExploreMoldova.Models.ApplicationServices;
+using iExploreMoldova.Models.Entities;
+using iExploreMoldova.Models.Interfaces;
+
+namespace iExploreMoldova.Models.Repositories
 {
-    public class ReviewRepository: IReviewRepository
+    public class ReviewRepository : IReviewRepository
     {
         private readonly iExploreMoldovaDbContext _context;
 

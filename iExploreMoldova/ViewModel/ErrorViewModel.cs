@@ -1,4 +1,4 @@
-namespace iExploreMoldova.Models
+namespace iExploreMoldova.ViewModel
 {
     public class ErrorViewModel
     {

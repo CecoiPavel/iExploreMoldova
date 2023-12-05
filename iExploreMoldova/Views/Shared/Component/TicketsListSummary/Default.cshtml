@@ -1,0 +1,17 @@
+﻿@model TicketsListViewModel
+
+@if (Model.CartTicket.CartList.Any())
+{
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M1.5 1a.5.5 0 0 1 .485.379L2.89 3H13.1a.5.5 0 0 1 .485.621l-1.5 6a.5.5 0 0 1-.485.379h-8l-.34 1.361a1 1 0 0 1-.97.78L1 11a1 1 0 0 1 1-1h11.325a1.5 1.5 0 0 1 1.455 1.121l1.5 6A1.5 1.5 0 0 1 12.675 16H2.495a1.5 1.5 0 0 1-1.455-1.121L.04 2.879A1.5 1.5 0 0 1 1.5 1z"/>
+                </svg>
+                <span>
+                    @Model.CartTicket.CartList.Count()
+                </span>
+            </a>
+        </li>
+    </ul>
+}

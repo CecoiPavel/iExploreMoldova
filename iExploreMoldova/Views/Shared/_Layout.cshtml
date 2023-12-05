@@ -9,29 +9,70 @@
     <link rel="stylesheet" href="~/iExploreMoldova.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <img src="/images/iExploreMoldova.png" width="150" height="80" alt="IExplore Moldova Logo"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="List">Locations</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Search</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+                    </li>
 
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    <img src="/images/iExploreMoldova.png" width="150" height="80" alt="IExplore Moldova Logo"/>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li><li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Location" asp-action="List">Locations</a>
-                        </li>
-                    </ul>
-                </div>
+                </ul>
+                    <button class="btn btn-dark">
+                        <a class="nav-link text-light" asp-area="" asp-controller="CartTicket" asp-action="Index">My Tickets</a>
+                    </button> 
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
+
+
+@*<div id="carouselExampleInterval" class="carousel slide fixed-top" data-bs-ride="carousel" style="max-height: 200px;">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+                <img src="https://guidedtours.one/pic/sections/gallery/5123//Day_6_Milestii_Mici_winery__Moldova_4.jpg" class="d-block w-50" alt="Location">
+        </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://cdn.thecrazytourist.com/wp-content/uploads/2023/02/ccimage-shutterstock_1226633419.jpg" class="d-block w-50" alt="Location">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://ways.md/storage/posts/November2019/Capture111-768x495.jpg" class="d-block w-50" alt="Location">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://media1.travelguide.de/media/c/md.jpeg" class="d-block w-50" alt="Location">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://www.helloholidays.ro/blog/wp-content/uploads/2016/09/chisinau.jpg" class="d-block w-50" alt="Location">
+        </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>*@
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

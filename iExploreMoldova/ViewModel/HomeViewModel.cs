@@ -1,5 +1,4 @@
-﻿
-using iExploreMoldova.Models;
+﻿using iExploreMoldova.Models.Entities;
 
 namespace iExploreMoldova.ViewModel
 {

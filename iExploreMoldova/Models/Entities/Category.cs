@@ -1,4 +1,4 @@
-﻿namespace iExploreMoldova.Models
+﻿namespace iExploreMoldova.Models.Entities
 {
     public class Category
     {

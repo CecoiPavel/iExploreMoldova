@@ -1,4 +1,6 @@
-﻿namespace iExploreMoldova.Models
+﻿using iExploreMoldova.Models.Entities;
+
+namespace iExploreMoldova.Models.Interfaces
 {
     public interface ILocationRepository
     {

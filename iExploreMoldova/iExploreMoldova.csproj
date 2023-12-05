@@ -21,4 +21,17 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\TicketsListSummary\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Order\Checkout.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\TicketsListSummary\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Order\Checkout.cshtml" />
+  </ItemGroup>
+
 </Project>

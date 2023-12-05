@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using iExploreMoldova.ViewModel;
+using iExploreMoldova.Models.Interfaces;
+using iExploreMoldova.Models.Repositories;
 
 namespace iExploreMoldova.Controllers
 {
